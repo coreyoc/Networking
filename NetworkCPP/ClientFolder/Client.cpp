@@ -13,14 +13,18 @@ using namespace std;
 
 int main(int argc, char const *argv[]) 
 { 
+    // Helper for relaible transport 
     rdtSender rdt(PORT);
+    // Helper for file IO
     FileManager file("/Users/coreyoconnor/NetworkCPP/ClientFolder/Dog.jpg",Packet::DATA_BUFFER_SIZE);
+
     if(file.readFile())
     {
         cout << "file is open " << endl;
     };
+
     char *chunk = new char[Packet::DATA_BUFFER_SIZE];
-      while(file.fileState)
+    while(file.fileState)
     {
 
         int chunkSize = file.getChunk(chunk);
@@ -31,6 +35,7 @@ int main(int argc, char const *argv[])
         };
 
     }; 
-    cout << "END" << endl;
+
+    cout << "Client Progem END" << endl;
     return 0; 
 }
